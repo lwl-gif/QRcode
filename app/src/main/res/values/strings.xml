@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">QRcode Application</string>
+    <string name="images">图片</string>
+    <string name="symbol">/</string>
 </resources>

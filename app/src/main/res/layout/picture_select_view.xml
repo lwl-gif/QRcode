@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding= "utf-8"?>
+<com.example.qrcodeapplication.PictureSelectViewGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!--标题-->
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="@string/images"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@id/addButton"
+        app:layout_constraintEnd_toStartOf="@id/addButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/addButton"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.0"/>
+
+    <!--当前图片数量-->
+    <TextView
+        android:id="@+id/textViewCurrentNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="textViewTitle"
+        app:layout_constraintEnd_toStartOf="@id/textViewSymbol"
+        app:layout_constraintStart_toEndOf="@id/textViewTitle"
+        app:layout_constraintTop_toTopOf="textViewTitle"
+        android:layout_marginEnd="2dp"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.0"/>
+
+    <!--符号“/”-->
+    <TextView
+        android:id="@+id/textViewSymbol"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="@string/symbol"
+        app:layout_constraintBottom_toBottomOf="@id/textViewTitle"
+        app:layout_constraintEnd_toStartOf="@id/textViewMaxNumber"
+        app:layout_constraintStart_toEndOf="@id/textViewTitle"
+        app:layout_constraintTop_toTopOf="textViewTitle"
+        android:layout_marginEnd="2dp"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"/>
+
+    <!--最大数量-->
+    <TextView
+        android:id="@+id/textViewMaxNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/textViewTitle"
+        app:layout_constraintEnd_toStartOf="@id/addButton"
+        app:layout_constraintStart_toEndOf="@id/textViewTitle"
+        app:layout_constraintTop_toTopOf="textViewTitle"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"/>
+
+    <!--多选图片按钮-->
+    <ImageButton
+        android:id="@+id/addButton"
+        android:src="@android:drawable/ic_input_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/pictureList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addButton"/>
+
+</com.example.qrcodeapplication.PictureSelectViewGroup>
