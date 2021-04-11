@@ -1,5 +1,148 @@
 <resources>
-    <string name="app_name">QRcode Application</string>
-    <string name="images">图片</string>
+    <string name="app_name">发条说说</string>
+    <string name="write_title">写说说</string>
+    <string name="images">图册</string>
+    <string name="imageName">图片名</string>
     <string name="symbol">/</string>
+
+
+    <string name="welcome">欢迎使用移动图书管理系统</string>
+    <string name="welcome1">掌上图书馆带您享受极致阅读体验</string>
+    <string name="register">注册新用户</string>
+    <string name="forget">修改密码</string>
+    <string name="next">下一步</string>
+    <string name="username">账号</string>
+    <string name="password">密码</string>
+
+    <string name="submit">提交</string>
+    <string name="add">添加</string>
+    <string name="update">更新</string>
+    <string name="edit">编辑</string>
+    <string name="cancel">取消</string>
+    <string name="save">保存</string>
+    <string name="title">标题</string>
+    <string name="reserve">一键预约</string>
+    <string name="back">返回</string>
+    <!--                                         -->
+    <string name="personalInfo">个人信息</string>
+    <string name="reader_manage">读者管理</string>
+    <string name="apply">挂失及处罚处理</string>
+    <string name="book_manage">图书管理</string>
+    <string name="notice">公告栏</string>
+    <string name="keyword">请输入关键字</string>
+    <string name="clickToSelect">点击检索</string>
+
+    <!--                                          -->
+    <string name="auto_fill_l_bookId">书本号（id）系统自动生成</string>
+    <string name="bookHot">热度:</string>
+    <string name="bookState">状态:</string>
+    <string name="bookId">No.</string>
+    <string name="bookName">名称:</string>
+    <string name="bookAuthor">作者:</string>
+    <string name="bookIsbn">Isbn:</string>
+    <string name="bookLibrary">所属馆:</string>
+    <string name="bookLocation">馆藏地点:</string>
+    <string name="bookCallNumber">索书号:</string>
+    <string name="bookTheme">主题:</string>
+    <string name="bookDescription">详情:</string>
+    <string name="bookFirst">一级分类:</string>
+    <string name="bookThird">二级分类:</string>
+    <string name="bookType">文献类型:</string>
+    <string name="bookHouse">出版社:</string>
+    <string name="bookDate">出版日期:</string>
+    <string name="bookPrice">定价(元):</string>
+    <string name="chooseLibrary">请选择图书所属的书馆</string>
+    <string name="chooseFirst">请选择图书的一级分类</string>
+    <string name="chooseThird">请选择图书的二级分类</string>
+    <string name="chooseType">请选择图书的文献类型</string>
+
+
+    <string name="auto_fill_readerId">系统自动生成</string>
+    <string name="pay">需支付(元):</string>
+
+
+    <!--                                          -->
+    <string name="basic_information">基本信息</string>
+    <string name="readerId">读者号:</string>
+    <string name="readerName">姓名:</string>
+    <string name="readerSex">性别:</string>
+    <string name="yourSex">您的性别？</string>
+    <string name="readerAge">年龄:</string>
+    <string name="readerDepartment">学院:</string>
+    <string name="readerClassroom">班级:</string>
+    <string name="readerUsername">账号:</string>
+    <string name="readerPassword">密码:</string>
+    <string name="readerPhone">手机号码:</string>
+    <string name="readerEMail">电子邮箱:</string>
+    <string name="reader_permission">权限信息</string>
+    <string name="readerCredit">信誉积分:</string>
+    <string name="readerAmount">剩余量:</string>
+    <string name="readerPermission">权限级别:</string>
+    <string name="readerType">证件类型:</string>
+    <string name="yourReaderType">您的证件类型？</string>
+    <string name="readerTerm">到期时间:</string>
+    <string name="edit_basic_information">编辑基本信息</string>
+    <string name="apply_reader_permission">申请借阅权限</string>
+    <string name="delete_reader">删除读者信息</string>
+
+
+    <string name="borrowTime">借阅时间</string>
+    <string name="returnTime">还书时间</string>
+    <string name="reserveTime">预约时间</string>
+    <string name="validTime">有效时间至</string>
+    <string name="moreDetail">更多详情</string>
+
+    <!--                                                   -->
+    <string name="code">code:</string>
+    <string name="message">结果:</string>
+    <string name="tip">提示:</string>
+    <string name="from">来源:</string>
+
+
+    <!--                                                     -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_r_main">掌上图书馆</string>
+    <string name="r_tab_text_1">我的借阅</string>
+    <string name="r_tab_text_2">馆藏图书</string>
+    <string name="r_tab_text_3">我的分享</string>
+    <string name="r_tab_text_4">处理记录</string>
+    <string name="moreFunction">更多功能</string>
+
+    <!--                                                     -->
+    <string name="menu_main">主要业务</string>
+    <string name="menu_myself">个人信息</string>
+    <string name="menu_setting">个人设置</string>
+
+    <string name="title_activity_l_main">LMainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="add_book">添加新书</string>
+    <string name="delete_book">删除此书</string>
+    <string name="add_reader">添加读者</string>
+    <string name="scan">扫一扫</string>
+    <string name="feedback">反馈建议</string>
+    <string name="aboutUs">关于我们</string>
+
+    <string name="l_tab_text_1">公告管理</string>
+    <string name="l_tab_text_2">缴费处理</string>
+    <string name="l_tab_text_3">读者管理</string>
+    <string name="l_tab_text_4">图书管理</string>
+
+    <string name="role_librarian">管理员</string>
+    <string name="librarianId">工号</string>
+    <string name="librarianName">姓名</string>
+    <string name="librarianSex">性别</string>
+    <string name="librarianAge">年龄</string>
+    <string name="librarianWorkplace">工作地点</string>
+    <string name="librarianUsername">用户名</string>
+    <string name="librarianPermission">权限级别</string>
+    <string name="quitAndClean">退出登录并清空应用的个人信息</string>
+    <string name="buttonUpdate">刷新</string>
+    <string name="closeAccount">注销账户</string>
+    <string name="show_picture">查看图片</string>
+    <string name="shareSomething">分享有趣的事吧...</string>
+
 </resources>

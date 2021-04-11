@@ -5,21 +5,17 @@ import android.content.Context;
 import android.os.Environment;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
-import com.bumptech.glide.request.RequestOptions;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
-import com.luck.picture.lib.config.PictureMimeType;
-import com.luck.picture.lib.entity.LocalMedia;
 
 import java.io.File;
 
@@ -68,16 +64,13 @@ public class PictureSelectViewGroup extends ConstraintLayout {
         this.textViewTitle.setText(title);
     }
 
-    public void setTextViewMaxNumber(TextView textViewMaxNumber) {
-        this.textViewMaxNumber = textViewMaxNumber;
-    }
-
     public PictureListAdapter getPictureListAdapter() {
         return pictureListAdapter;
     }
 
-    public void setPictureListAdapter(PictureListAdapter pictureListAdapter) {
+    public void setPictureListAdapter(LinearLayoutManager linearLayoutManager, PictureListAdapter pictureListAdapter) {
         this.pictureListAdapter = pictureListAdapter;
+        pictureList.setLayoutManager(linearLayoutManager);
         pictureList.setAdapter(this.pictureListAdapter);
     }
 
@@ -107,21 +100,21 @@ public class PictureSelectViewGroup extends ConstraintLayout {
 
     /**初始化UI，根据业务需求设置默认值。*/
     private void initView(Context context) {
-        LayoutInflater.from(context).inflate(R.layout.picture_select_view, this, true);
-        textViewTitle = (TextView) findViewById(R.id.textViewTitle);
+        View rootView = LayoutInflater.from(context).inflate(R.layout.picture_select_view, this, true);
+        textViewTitle = rootView.findViewById(R.id.textViewTitle);
         textViewTitle.setText(R.string.images);
-        textViewCurrentNumber = (TextView) findViewById(R.id.textViewCurrentNumber);
+        textViewCurrentNumber =  rootView.findViewById(R.id.textViewCurrentNumber);
         currentNumber = 0;
         textViewCurrentNumber.setText(String.valueOf(currentNumber));
-        textViewSymbol = (TextView) findViewById(R.id.textViewSymbol);
+        textViewSymbol =  rootView.findViewById(R.id.textViewSymbol);
         textViewSymbol.setText(R.string.symbol);
-        textViewMaxNumber = (TextView) findViewById(R.id.textViewMaxNumber);
+        textViewMaxNumber =  rootView.findViewById(R.id.textViewMaxNumber);
         setMaxNumber(0);
-        addButton = (ImageButton) findViewById(R.id.addButton);
+        addButton = rootView.findViewById(R.id.addButton);
         addButton.setOnClickListener(view -> {
             addPictureListener();
         });
-        pictureList = (RecyclerView) findViewById(R.id.pictureList);
+        pictureList = rootView.findViewById(R.id.pictureList);
     }
 
 
@@ -132,7 +125,7 @@ public class PictureSelectViewGroup extends ConstraintLayout {
                 // 全部.PictureMimeType.ofAll()、图片.ofImage()、视频.ofVideo()、音频.ofAudio()
                 .openGallery(ofImage())
                 // 主题样式设置 具体参考 values/styles   用法：R.style.picture.white.style
-                .theme(R.style.picture_default_style)
+                .theme(R.style.Theme_QRcodeApplication)
                 // 最大图片选择数量
                 .maxSelectNum(maxNumber-currentNumber)
                 // 多选 or 单选
