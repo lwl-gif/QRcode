@@ -7,10 +7,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.luck.picture.lib.PictureSelector;
@@ -30,20 +33,17 @@ public class MainActivity extends Activity implements ImagesAdapter.ItemListener
 
     /**每次已选的图片*/
     private List<LocalMedia> selectList = new ArrayList<>();
-    private TextView tv_cancel;
-    private Button btn_submit;
+    private Button btnSubmit;
     private EditText editText;
     private ImagesAdapter imagesAdapter;
     private RecyclerView recyclerView;
 
-
-    @SuppressLint({"UseCompatLoadingForDrawables", "ShowToast", "ResourceAsColor"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tv_cancel = findViewById(R.id.tv_cancel);
-        tv_cancel.setOnClickListener(view -> {
+        TextView tvCancel = findViewById(R.id.tv_cancel);
+        tvCancel.setOnClickListener(view -> {
             finish();
         });
         editText = findViewById(R.id.editText);
@@ -62,18 +62,18 @@ public class MainActivity extends Activity implements ImagesAdapter.ItemListener
             @Override
             public void afterTextChanged(Editable editable) {
                 if (editable.length() == 0){
-                    btn_submit.setClickable(false);
-                    btn_submit.setTextColor(R.color.gray);
+                    btnSubmit.setClickable(false);
+                    btnSubmit.setTextColor(ContextCompat.getColor(MainActivity.this,R.color.gray));
                 }else {
-                    btn_submit.setClickable(true);
-                    btn_submit.setTextColor(R.color.black);
+                    btnSubmit.setClickable(true);
+                    btnSubmit.setTextColor(ContextCompat.getColor(MainActivity.this,R.color.blue));
                 }
             }
         });
-        btn_submit = findViewById(R.id.btn_submit);
-        btn_submit.setClickable(false);
-        btn_submit.setTextColor(R.color.gray);
-        btn_submit.setOnClickListener(view -> {
+        btnSubmit = findViewById(R.id.btn_submit);
+        btnSubmit.setClickable(false);
+        btnSubmit.setTextColor(ContextCompat.getColor(this,R.color.gray));
+        btnSubmit.setOnClickListener(view -> {
             Toast.makeText(this,"说说已发表："+editText.getText().toString().trim(),Toast.LENGTH_LONG).show();
         });
         recyclerView = findViewById(R.id.recyclerView);
@@ -84,7 +84,6 @@ public class MainActivity extends Activity implements ImagesAdapter.ItemListener
         super.onStart();
         imagesAdapter = new ImagesAdapter(this,this,this.selectList);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this,3 );
-
         recyclerView.setAdapter(imagesAdapter);
         recyclerView.setLayoutManager(gridLayoutManager);
     }
@@ -114,7 +113,7 @@ public class MainActivity extends Activity implements ImagesAdapter.ItemListener
                     //是否可预览图片
                     .previewImage(true)
                     //是否显示拍照按钮 true or false
-                    .isCamera(true)
+                    .isCamera(false)
                     //拍照保存图片格式后缀,默认jpeg
                     .imageFormat(PictureMimeType.JPEG)
                     //图片列表点击 缩放效果 默认true
@@ -132,7 +131,7 @@ public class MainActivity extends Activity implements ImagesAdapter.ItemListener
                     //是否显示裁剪矩形网格 圆形裁剪时建议设为false    true or false
                     .showCropGrid(false)
                     //是否开启点击声音 true or false
-//                .openClickSound()
+                    .openClickSound(true)
                     //是否传入已选图片 List<LocalMedia> list
                     .selectionMedia(this.imagesAdapter.getSelectList())
                     //同步true或异步false 压缩 默认同步
@@ -149,7 +148,8 @@ public class MainActivity extends Activity implements ImagesAdapter.ItemListener
         else {
             Intent intent = new Intent(MainActivity.this,ShowPictureActivity.class);
             Bundle bundle = new Bundle();
-            bundle.putStringArrayList("imagesPath",this.imagesAdapter.getImagesPath());
+            Log.e(TAG, "onClickToShow: imagesAdapter = "+imagesAdapter);
+            bundle.putParcelable("imagesAdapter",imagesAdapter);
             bundle.putInt("position",position);
             intent.putExtras(bundle);
             startActivity(intent);

@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.res.Resources;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.luck.picture.lib.entity.LocalMedia;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +26,7 @@ import java.util.List;
  * @Date:2021/4/11 19:20
  * @Modified By:
  */
-public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder> {
+public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder> implements Parcelable {
 
     private Context context;
     /**添加按钮的图片路径*/
@@ -37,7 +40,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder
     /**当前是否第一次删除图片*/
     private boolean firstDelete = true;
 
-    public ImagesAdapter(Context context,ItemListener itemListener,List<LocalMedia> selectList){
+    public ImagesAdapter(Context context, ItemListener itemListener, List<LocalMedia> selectList){
         this.context = context;
         this.itemListener = itemListener;
         this.selectList = selectList;
@@ -48,6 +51,26 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder
                 + resources.getResourceEntryName(R.drawable.add_image);
         setSelectList(selectList);
     }
+
+    protected ImagesAdapter(Parcel in) {
+        path = in.readString();
+        selectList = in.createTypedArrayList(LocalMedia.CREATOR);
+        imagesPath = in.createStringArrayList();
+        deleting = in.readByte() != 0;
+        firstDelete = in.readByte() != 0;
+    }
+
+    public static final Creator<ImagesAdapter> CREATOR = new Creator<ImagesAdapter>() {
+        @Override
+        public ImagesAdapter createFromParcel(Parcel in) {
+            return new ImagesAdapter(in);
+        }
+
+        @Override
+        public ImagesAdapter[] newArray(int size) {
+            return new ImagesAdapter[size];
+        }
+    };
 
     public List<LocalMedia> getSelectList() {
         return selectList;
@@ -113,6 +136,20 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder
         selectList.remove(position);
         imagesPath.remove(position);
         notifyItemRemoved(position);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(path);
+        parcel.writeTypedList(selectList);
+        parcel.writeStringList(imagesPath);
+        parcel.writeByte((byte) (deleting ? 1 : 0));
+        parcel.writeByte((byte) (firstDelete ? 1 : 0));
     }
 
     /**列表项的监听器*/
