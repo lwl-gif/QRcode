@@ -1,4 +1,4 @@
-package com.example.qrcodeapplication;
+package com.example.sendtalk.activity;
 
 
 import android.app.Activity;
@@ -13,10 +13,10 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.luck.picture.lib.entity.LocalMedia;
+import com.example.sendtalk.R;
+import com.example.sendtalk.adapter.ImagesAdapter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @Author:Wallace
@@ -55,8 +55,7 @@ public class ShowPictureActivity extends Activity{
         Bundle bundle = getIntent().getExtras();
         //获取数据
         ImagesAdapter imagesAdapter = (ImagesAdapter) bundle.getParcelable("imagesAdapter");
-        imagesPath = imagesAdapter.getImagesPath();
-
+        imagesPath = imagesAdapter.getGlideLoad();
         //获取点击位置
         position = bundle.getInt("position") + 1;
         tvNow.setText(String.valueOf(position));

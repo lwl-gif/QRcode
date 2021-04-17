@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout3"
@@ -44,6 +44,19 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/btn_last"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:background="@drawable/btn01"
+                    android:text="@string/last"
+                    android:textColor="@color/blue"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_cancel"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_write_title"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/tv_cancel"
+                    app:layout_constraintTop_toTopOf="@+id/tv_cancel" />
 
                 <Button
                     android:id="@+id/btn_submit"
@@ -87,6 +100,7 @@
                             android:background="#EDEACF"
                             android:gravity="start"
                             android:hint="@string/shareSomething"
+                            android:inputType="text"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"

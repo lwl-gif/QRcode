@@ -1,4 +1,4 @@
-package com.example.qrcodeapplication;
+package com.example.sendtalk;
 
 import android.content.Context;
 

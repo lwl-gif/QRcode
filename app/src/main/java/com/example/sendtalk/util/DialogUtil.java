@@ -1,31 +1,19 @@
-package com.example.qrcodeapplication;
+package com.example.sendtalk.util;
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.widget.Toast;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.example.sendtalk.R;
+import com.example.sendtalk.adapter.ImagesAdapter;
 
 /**
  * @author luoweili
  */
 public class DialogUtil {
-
-    /**定义一个图片删除的对话框*/
-    public static void showDialog(Context context , PictureListAdapter pictureListAdapter , int position) {
-        String title = "您确定要删除此图吗？";
-        StringBuilder buffer = new StringBuilder("图片：");
-        String name = context.getResources().getResourceName(pictureListAdapter.getData().get(position));
-        String msg = buffer.append(name).toString();
-        //创建一个AlertDialog.Builder对象
-        AlertDialog.Builder builder = new AlertDialog.Builder(context).setTitle(title).setMessage(msg).setCancelable(false);
-        builder.setPositiveButton("确定", (dialog, which) -> {
-            pictureListAdapter.removeItem(position);
-        });
-        builder.setNegativeButton("取消",null);
-        builder.create().show();
-    }
 
     /**定义一个图片删除的对话框*/
     public static void showDialog(Context context , ImagesAdapter imagesAdapter, int position) {
@@ -56,6 +44,26 @@ public class DialogUtil {
             }
         });
         //参数都设置完成了，创建并显示出来
+        builder.create().show();
+    }
+
+    /**定义一个显示指定内容的对话框*/
+    public static void showDialog(Context context, String tag, Bundle data){
+        String code = data.getString("code");
+        String message = data.getString("message");
+        String tip = data.getString("tip");
+        View view = View.inflate(context, R.layout.dialog_view,null);
+        TextView tvFrom = view.findViewById(R.id.dialog_from);
+        tvFrom.setText(tag);
+        TextView tvCode = view.findViewById(R.id.dialog_code);
+        tvCode.setText(code);
+        TextView tvMessage = view.findViewById(R.id.dialog_message);
+        tvMessage.setText(message);
+        TextView tvTip = view.findViewById(R.id.dialog_tip);
+        tvTip.setText(tip);
+        //创建一个AlertDialog.Builder对象
+        AlertDialog.Builder builder = new AlertDialog.Builder(context).setView(view).setCancelable(false);
+        builder.setPositiveButton("确定", null);
         builder.create().show();
     }
 }
